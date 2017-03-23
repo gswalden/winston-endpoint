@@ -1,0 +1,28 @@
+{
+  "name": "winston-endpoint",
+  "version": "0.0.0",
+  "description": "Winston transport for sending logs to an HTTP endpoint",
+  "main": "endpoint.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gswalden/winston-endpoint.git"
+  },
+  "author": "Greg Walden <talk@gsw.nyc>",
+  "license": "ISC",
+  "dependencies": {
+    "got": "^6.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.0",
+    "nock": "^9.0.9"
+  },
+  "peerDependencies": {
+    "winston": "^2.0.0"
+  },
+  "engines": {
+    "node": ">4"
+  }
+}
