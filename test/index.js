@@ -6,19 +6,17 @@ const Endpoint = require('../endpoint');
 const winston = require('winston');
 
 describe('winston-endpoint tests', () => {
-  let scope, logger, body;
+  let scope, logger, body, url;
 
   beforeEach(() => {
-    const url = 'http://localhost:5555';
+    url = 'http://localhost:5555';
     body = null;
     scope = nock(url).post('/').reply(200, (uri, reqBody) => {
       return body = reqBody;
     });
     logger = new winston.Logger({
       transports: [
-        new winston.transports.Endpoint({
-          url
-        })
+        new winston.transports.Endpoint({ url })
       ]
     })
   });
@@ -58,6 +56,27 @@ describe('winston-endpoint tests', () => {
     logger.info(log, err => {
       assert(scope.isDone());
       assert.equal(body, `info: ${log}`);
+      done(err);
+    });
+  });
+
+  it('silent = true works', done => {
+    logger.transports.endpoint.silent = true;
+    const log = 'So say we all.';
+    logger.info(log, err => {
+      assert(!scope.isDone());
+      done(err);
+    });
+  });
+
+  it('can change http method', done => {
+    logger.transports.endpoint.http = { method: 'PUT' };
+    let putScope = nock(url).put('/').reply(200, (uri, reqBody) => {
+      return body = reqBody;
+    });
+    const log = 'So say we all.';
+    logger.info(log, err => {
+      assert(putScope.isDone());
       done(err);
     });
   });
