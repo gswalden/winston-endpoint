@@ -2,7 +2,7 @@
 
 const nock = require('nock');
 const assert = require('assert');
-const Endpoint = require('../endpoint');
+const Endpoint = require('../');
 const winston = require('winston');
 
 describe('winston-endpoint tests', () => {
@@ -62,6 +62,15 @@ describe('winston-endpoint tests', () => {
 
   it('silent = true works', done => {
     logger.transports.endpoint.silent = true;
+    const log = 'So say we all.';
+    logger.info(log, err => {
+      assert(!scope.isDone());
+      done(err);
+    });
+  });
+
+  it('does not log levels below minimum', done => {
+    logger.transports.endpoint.level = 'error';
     const log = 'So say we all.';
     logger.info(log, err => {
       assert(!scope.isDone());
