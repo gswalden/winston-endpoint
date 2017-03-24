@@ -4,6 +4,7 @@
   "description": "Winston transport for sending logs to an HTTP endpoint",
   "main": "index.js",
   "scripts": {
+    "preversion": "npm test",
     "test": "mocha"
   },
   "repository": {
