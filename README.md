@@ -40,7 +40,7 @@ logger.info('So say we all.');
 ```js
 const winston = require('winston');
 const Endpoint = require('winston-endpoint');
-winston.loggers.add('galatica', {
+winston.loggers.add('galactica', {
   endpoint: {
     url: 'http://requestb.in/1hc2i4h13', // endpoint to send logs to (no default)
     json: false, // send the log as a JSON object or a plain string (default: false)
@@ -51,7 +51,7 @@ winston.loggers.add('galatica', {
     http: {} // see below
   }
 });
-winston.loggers.get('galatica').info('So say we all.');
+winston.loggers.get('galactica').info('So say we all.');
 ```
 
 The underlying library for this transport is [got](https://github.com/sindresorhus/got), and you can pass any options it accepts through the `http` field in the options object.
