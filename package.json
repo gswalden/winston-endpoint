@@ -1,6 +1,6 @@
 {
   "name": "winston-endpoint",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Winston transport for sending logs to an HTTP endpoint",
   "main": "index.js",
   "scripts": {
