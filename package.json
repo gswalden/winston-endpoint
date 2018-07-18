@@ -1,6 +1,6 @@
 {
   "name": "winston-endpoint",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Winston transport for sending logs to an HTTP endpoint",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
     "nock": "^9.0.9"
   },
   "peerDependencies": {
-    "winston": "^2.0.0"
+    "winston": ">=3.0.0"
   },
   "engines": {
     "node": ">4"
